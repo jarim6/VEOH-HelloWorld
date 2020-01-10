@@ -3,27 +3,25 @@ function sleep(ms) {
 }
 
 class order {
-    delivered=false;
-    constructor(id,message){
-        this.id=id;
-        this.message=message;
-            
-        }
+    delivered = false;
+    constructor(id, message) {
+        this.id = id;
+        this.message = message;
+    }
+    summarize = async () => {
+        console.log('start summarize');
 
-summarize = async () => {
-    await sleep(1500);
-    console.log('summarize');
-    const summary='order id:'+
-    this.id+', message: ' + this.message + ',delivered: ' + this.delivered;
-    return summary;
+        //Simulate database delay or heavy calculation
+        await sleep(1000);
+        const summary = 'order id: ' +
+            this.id + ', message: ' + this.message + ', delivered: ' + this.delivered;
+        console.log('end summarize');
+        return summary;
+    }
 }
 
-}
+let order_obj = new order(1237, 'Second order');
 
-
-let order_obj=new order(1237, 'Second order');
-
-//()=>{} = funktion määrittäminen suoraan, kts alta esim.
-order_obj.summarize().then((summary)=>{
-console.log(summary);
+order_obj.summarize().then((summary) => {
+    console.log(summary);
 });
